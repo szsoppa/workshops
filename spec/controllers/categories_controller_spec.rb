@@ -13,6 +13,7 @@ describe CategoriesController do
     controller.stub(:user_signed_in?).and_return(true)
     controller.stub(:current_user).and_return(user)
     controller.stub(:authenticate_user!).and_return(user)
+
   end
 
   context 'user is not an admin' do
