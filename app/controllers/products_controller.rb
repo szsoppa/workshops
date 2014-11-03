@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    flash[:error] = 'You are not allowed to edit this product.'
+    redirect_to(category_product_url(category, product))
   end
 
   def create
@@ -32,11 +34,12 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if self.product.update(product_params)
+    if current_user != product.user
+      flash[:error] = 'You are not allowed to edit this product.'
+    elsif self.product.update(product_params)
       redirect_to category_product_url(category, product), notice: 'Product was successfully updated.'
-    else
-      render action: 'edit'
     end
+    redirect_to category_product_url(category, product)
   end
 
   # DELETE /products/1
