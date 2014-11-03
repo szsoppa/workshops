@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :check_user_permission, only: [:edit, :update, :destroy]
 
   expose(:category)
   expose(:products)
@@ -34,12 +35,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if current_user != product.user
-      flash[:error] = 'You are not allowed to edit this product.'
-    elsif self.product.update(product_params)
+    if self.product.update(product_params)
       redirect_to category_product_url(category, product), notice: 'Product was successfully updated.'
+    else
+      redirect_to category_product_url(category, product)
     end
-    redirect_to category_product_url(category, product)
   end
 
   # DELETE /products/1
@@ -52,5 +52,12 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:title, :description, :price, :category_id)
+  end
+
+  def check_user_permission
+    if current_user != product.user
+      flash[:error] = 'You are not allowed to edit this product.'
+      redirect_to category_product_url(category, product)
+    end
   end
 end
