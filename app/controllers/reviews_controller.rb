@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_action :authenticate_user!
+
   expose(:review)
   expose(:product)
 
