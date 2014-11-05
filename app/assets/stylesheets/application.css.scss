@@ -11,6 +11,9 @@
   -moz-border-radius: 0 !important;
 }
 
+$purple: #2D174C;
+$white: #fff;
+
 body {
 
   /* navigation */
@@ -18,23 +21,25 @@ body {
     font-size: 2em;
     padding-right: 50px;
 
-    a,p { color: #fff; }
+    a,p {
+      color: $white;
+    }
 
     a:hover {
         text-decoration: none;
-        color: #fff;
-        text-shadow: 0 0 5px #fff;
+        color: $white;
+        text-shadow: 0 0 5px $white;
     }
 
-    &.navbar-inverse { background-color: #2D174C }
+    &.navbar-inverse { background-color: $purple; }
   }
 
   /* footer */
 
   div.footer {
     text-align: center;
-    background-color: #2D174C;
-    color: #fff;
+    background-color: $purple;
+    color: $white;
 
     p { font-weight: bold }
   }
@@ -43,19 +48,25 @@ body {
 
   a {
     text-decoration: none;
-    color: #2D174C;
+    color: $purple;
 
     &:link { text-decoration: none; }
     &:hover {
-      color: #2D174C;
+      color: $purple;
       text-decoration: underline;
     }
   }
+
+  p { font-size: 18px; }
 
   h1 {
     padding-bottom: 20px;
     text-align: center;
   }
+
+  div.navbar-text.navbar-right a { float: right; }
+
+  span.user p { font-size: 16px; }
 
   /* forms */
 
@@ -64,6 +75,26 @@ body {
       font-size: 18px;
       text-align: right;
     }
+    input.btn { margin-top: 10px; }
+
+    div { margin-bottom: 10px; }
+  }
+
+  /* tables */
+
+
+
+  /* custom divs */
+
+  div.row.center-block {
+    border: 2px $purple solid;
+    border-radius: 15px !important;
+    width: 40%;
+    padding: 5px 0px 20px 0px;
+    background-color: $purple;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    color: $white;
   }
 
   /* bootstrap divs */
@@ -82,9 +113,15 @@ body {
   }
 
   .btn {
-     background-color: #2D174C;
+     background-color: $purple;
 
-     &:hover { background-color: #2D174C; }
+     &:hover { background-color: $purple; }
+
+     &.btn-success { background-color: #3EB565; }
+     &.btn-info { background-color: #36D0EB; }
+     &.btn-danger { background-color: #F96153; }
   }
+
+
 
 }
