@@ -11,47 +11,80 @@
   -moz-border-radius: 0 !important;
 }
 
-.row-centered {
-    text-align:center;
-}
+body {
 
-.col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align:left;
-    /* inline-block space fix */
-    margin-right:-4px;
-}
+  /* navigation */
+  nav {
+    font-size: 2em;
+    padding-right: 50px;
 
+    a,p { color: #fff; }
 
-html {
-  body {
-
-    nav {
-      font-size: 2em;
-      padding-right: 50px;
-
-      a,p {
+    a:hover {
+        text-decoration: none;
         color: #fff;
-      }
-
-      a:hover {
-          text-decoration: none;
-          color: #fff;
-          text-shadow: 0 0 10px #66AFE9;
-        }
-
+        text-shadow: 0 0 5px #fff;
     }
 
-    p {
-      font-size: 1.1em;
-      line-height: 1.7em;
-    }
+    &.navbar-inverse { background-color: #2D174C }
   }
+
+  /* footer */
 
   div.footer {
     text-align: center;
-    color: #000;
+    background-color: #2D174C;
+    color: #fff;
+
+    p { font-weight: bold }
   }
+
+  /* text decoration */
+
+  a {
+    text-decoration: none;
+    color: #2D174C;
+
+    &:link { text-decoration: none; }
+    &:hover {
+      color: #2D174C;
+      text-decoration: underline;
+    }
+  }
+
+  h1 {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  /* forms */
+
+  form {
+    label {
+      font-size: 18px;
+      text-align: right;
+    }
+  }
+
+  /* bootstrap divs */
+
+  .row-centered {
+      text-align:center;
+  }
+
+  .col-centered {
+      display:inline-block;
+      float:none;
+      /* reset the text-align */
+      text-align:centered;
+      /* inline-block space fix */
+      margin-right:-4px;
+  }
+
+  .btn {
+     background-color: #2D174C;
+
+     &:hover { background-color: #2D174C; }
+  }
+
 }
