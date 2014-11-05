@@ -1,1 +1,43 @@
+/*
+*= require_tree .
+*= require_self
+*/
+
+
 @import "bootstrap";
+
+* {
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+}
+
+html {
+  body {
+
+    nav {
+      font-size: 2em;
+      padding-right: 50px;
+
+      a,p {
+        color: #fff;
+      }
+
+      a:hover {
+          text-decoration: none;
+          color: #fff;
+          text-shadow: 0 0 10px #66AFE9;
+        }
+
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.7em;
+    }
+  }
+
+  div.footer {
+    text-align: center;
+    color: #000;
+  }
+}
