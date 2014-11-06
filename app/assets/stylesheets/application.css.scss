@@ -83,7 +83,6 @@ body {
   /* tables */
 
 
-
   /* custom divs */
 
   div.row.center-block {
@@ -114,6 +113,8 @@ body {
 
   .btn {
      background-color: $purple;
+     border-radius: 7px !important;
+     min-width: 40px !important;
 
      &:hover { background-color: $purple; }
 

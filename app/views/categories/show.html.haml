@@ -1,7 +1,5 @@
 %p#notice= notice
 
-
-
 %div.row.center-block
   %h2
     Category:
@@ -9,7 +7,6 @@
     - category.products.each do |product|
       %h3
       = product.title
-
 
 %p
   - if current_user && current_user.admin?
