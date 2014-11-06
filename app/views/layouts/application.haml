@@ -8,7 +8,10 @@
     = javascript_include_tag 'application'
 
   %body
-    = render 'layouts/header'
+    -if user_signed_in?
+      = render 'layouts/active_header'
+    -else
+      = render 'layouts/inactive_header'
     .container-fluid
       .row.row-centered
         .col-xs-6.col-centered

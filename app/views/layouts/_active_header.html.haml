@@ -1,0 +1,16 @@
+%nav.navbar.navbar-inverse{:role => "navigation"}
+  .container-fluid
+    .navbar-text
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Netguru Kraków Workshops 2014', root_path, class: "navbar-link"
+    %ul.nav.navbar-nav.navbar-right
+      #navbar.navbar-collapse.collapse
+        .navbar-text
+          %ul.nav.navbar-nav
+            %li
+              = link_to "User profile", current_user
+            %li
+              = link_to "Log out", destroy_user_session_path, method: :delete
