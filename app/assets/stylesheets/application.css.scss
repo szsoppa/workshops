@@ -6,6 +6,16 @@
 
 @import "bootstrap";
 
+@mixin opacity-box {
+  border: 2px $purple solid;
+  border-radius: 15px !important;
+  padding: 5px 0px 20px 0px;
+  background-color: $purple;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  color: $white;
+}
+
 * {
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
@@ -16,7 +26,6 @@ $white: #fff;
 
 
 body {
-
   /* navigation */
   nav {
     font-size: 2em !important;
@@ -24,6 +33,7 @@ body {
     a {
       color: $white !important;
       padding-left: 20px;
+      padding-right: 20px;
       &:hover {
         color: $white;
         text-decoration: none;
@@ -79,20 +89,36 @@ body {
     div { margin-bottom: 10px; }
   }
 
-  /* tables */
-
-
   /* custom divs */
 
+  #gravatar {
+    padding: 0px;
+    width: 100%;
+    border-bottom-left-radius: 10px !important;
+  }
+
+  .no-padding { padding: 0px; }
+  .extra-padding {
+    padding: 10px 10px 10px 20px;
+    text-align: left;
+  }
+
+  .full-image {
+    margin-top: 0px !important;
+    height: 100%;
+    background-image: image-url("headphones_tablet.jpg");
+  }
+
   div.row.center-block {
-    border: 2px $purple solid;
-    border-radius: 15px !important;
-    width: 40%;
-    padding: 5px 0px 20px 0px;
-    background-color: $purple;
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    color: $white;
+    @include opacity-box;
+  }
+
+  #user-box {
+    @include opacity-box;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
   }
 
   /* bootstrap divs */
@@ -122,6 +148,19 @@ body {
      &.btn-danger { background-color: #F96153; }
   }
 
+  .row { padding-top: 20px; }
+  .col-centered {
+    #main {
+      background-color: $white;
+      border-radius: 5px !important;
+      opacity: 0.7;
+      h1, th {
+        color: #000;
+        font-weight: bold;
+      }
+      padding: 5px;
+    }
+  }
 
 
 }

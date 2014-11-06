@@ -1,20 +1,21 @@
-%h1 Listing categories
+#main
+  %h1 Listing categories
 
-%table.table
-  %thread
-    %tr
-      %th Name
-      %th{colspan:3} Action
-  - categories.each do |category|
-    %tbody
+  %table.table
+    %thread
       %tr
-        %th= category.name
-        %th= link_to 'Show', category, class: 'btn btn-info btn-sm'
-        - if current_user && current_user.admin?
-          %th= link_to 'Edit', edit_category_path(category), class: 'btn btn-success btn-sm'
-          %th= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+        %th Name
+        %th{colspan:3} Action
+    - categories.each do |category|
+      %tbody
+        %tr
+          %th= category.name
+          %th= link_to 'Show', category, class: 'btn btn-info btn-sm'
+          - if current_user && current_user.admin?
+            %th= link_to 'Edit', edit_category_path(category), class: 'btn btn-success btn-sm'
+            %th= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
 
 
 
-- if current_user && current_user.admin?
-  = link_to 'New Category', new_category_path, class: 'btn btn-primary'
+  - if current_user && current_user.admin?
+    = link_to 'New Category', new_category_path, class: 'btn btn-primary'

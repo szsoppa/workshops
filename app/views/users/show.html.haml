@@ -1,1 +1,12 @@
-= @user.email 
+#user-box
+  %h1= "#{@user.firstname} #{@user.lastname}"
+.col-md-4.no-padding
+  = image_tag gravatar_url(@user, 800), id: 'gravatar'
+.col-md-8.extra-padding
+  %h3= "Email: #{@user.email}"
+  - if @user.reviews.sort.last(5).length == 0
+    %h3 User hasn't created even a single review yet
+  - else
+    %h3= "User five recent reviews: "
+    - @user.reviews.sort.last(5).each do |r|
+      %h4= "\"#{r.content}\""

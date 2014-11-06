@@ -9,11 +9,24 @@
 # Users
 User.create(email: 'admin@example.com', password: 'administrator',	firstname: 'Admin',	lastname: 'Administator', admin: true)
 users = []
-5.times { |i| users << User.create(email: "user#{i}@example.com", password: "userpassword", firstname: "User#{i}", lastname: "User#{i}", admin: false) }
+5.times { |i| users << User.new(email: "user#{i}@example.com", password: "userpassword", admin: false) }
+users[0].firstname = "John"
+users[1].firstname = "Michael"
+users[2].firstname = "Rudy"
+users[3].firstname = "Adam"
+users[4].firstname = "Simon"
+
+users[0].lastname = "Mayer"
+users[1].lastname = "Jordan"
+users[2].lastname = "Michaels"
+users[3].lastname = "Lavigne"
+users[4].lastname = "Gayes"
+
+5.times { |u| users[u].save }
 
 # Categories
-phones = Category.create name: 'basketball'
-computers = Category.create name: 'football'
+phones = Category.create name: 'Phones'
+computers = Category.create name: 'Computers'
 
 computers.products.create(
 	title: 'Apple Macbook Air',
@@ -37,5 +50,5 @@ phones.products.create(
 	user: users[3])
 
 Product.all.each do |product|
-	3.times { product.reviews.create(content: 'Here is a great review example for this product', rating: rand(5)+1, user: users[rand(5)+1]) }
+	5.times { |x| product.reviews.create(content: 'Here is a great review example for this product #{x}', rating: rand(5)+1, user: users[rand(5)+1]) }
 end
