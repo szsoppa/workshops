@@ -105,7 +105,6 @@ body {
 
   .full-image {
     margin-top: 0px !important;
-    height: 100%;
     background-image: image-url("headphones_tablet.jpg");
   }
 
@@ -122,26 +121,34 @@ body {
   }
 
   /* bootstrap divs */
+  .container-fluid {
+    height: 100%;
+  }
 
   .row-centered {
-      text-align:center;
+    text-align:center;
+    padding-bottom: 50px;;
   }
 
   .col-centered {
-      display:inline-block;
-      float:none;
-      /* reset the text-align */
-      text-align:centered;
-      /* inline-block space fix */
-      margin-right:-4px;
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:centered;
+    /* inline-block space fix */
+    margin-right:-4px;
   }
 
   .btn {
      background-color: $purple;
      border-radius: 7px !important;
      min-width: 40px !important;
+     color: $white;
 
-     &:hover { background-color: $purple; }
+     &:hover {
+       background-color: $purple;
+       color: $white;
+     }
 
      &.btn-success { background-color: #3EB565; }
      &.btn-info { background-color: #36D0EB; }
@@ -161,6 +168,5 @@ body {
       padding: 5px;
     }
   }
-
 
 }

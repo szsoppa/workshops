@@ -1,12 +1,17 @@
 %p#notice= notice
-
-%div.row.center-block
-  %h2
-    Category:
-    = category.name
-    - category.products.each do |product|
-      %h3
-      = product.title
+.col-md-12
+  %h1= category.name
+  - category.products.each do |product|
+    .col-md-6
+      .panel.panel-default
+        .panel-heading
+          %h2.panel-title= product.title
+          = "#{product.price} $"
+        .panel-body
+          %p= product.description
+          - if current_user == product.user || current_user.admin?
+            %th= link_to 'Edit', edit_category_product_path(product.category,product), class: 'btn btn-success btn-sm'
+            %th= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
 
 %p
   - if current_user && current_user.admin?
