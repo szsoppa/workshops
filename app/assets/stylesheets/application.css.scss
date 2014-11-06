@@ -14,6 +14,7 @@
 $purple: #2D174C;
 $white: #fff;
 
+
 body {
 
   /* navigation */
@@ -22,7 +23,7 @@ body {
     padding-right: 50px;
 
     a,p {
-      color: $white;
+      color: $white !important;
     }
 
     a:hover {
@@ -32,6 +33,8 @@ body {
     }
 
     &.navbar-inverse { background-color: $purple; }
+
+    ul.dropdown-menu li a { color: $purple !important}
   }
 
   /* footer */
