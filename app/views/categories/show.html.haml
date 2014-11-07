@@ -9,13 +9,13 @@
           = "#{product.price} $"
         .panel-body
           %p= product.description
-          - if current_user == product.user || current_user.admin?
+          - if (current_user == product.user) || (current_user && current_user.admin?)
             %th= link_to 'Edit', edit_category_product_path(product.category,product), class: 'btn btn-success btn-sm'
             %th= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
 
-%p
+
   - if current_user && current_user.admin?
     %h3 New product
     = render 'products/form'
     = link_to 'Edit', edit_category_path(category), class: 'btn btn-primary'
-    = link_to 'Back', categories_path, class: 'btn btn-primary'
+= link_to 'Back', categories_path, class: 'btn btn-primary'
