@@ -157,7 +157,9 @@ body {
      &.btn-danger { background-color: #F96153; }
   }
 
-  .row { padding-top: 20px; }
+  .row {
+    padding-top: 20px;
+  }
   .col-centered {
     #main {
       background-color: $white;
@@ -170,5 +172,8 @@ body {
       padding: 5px;
     }
   }
+  #product-box { height: 400px; }
+
+
 
 }

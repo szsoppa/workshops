@@ -2,7 +2,7 @@
 .col-md-12
   %h1= category.name
   - category.products.each do |product|
-    .col-md-6
+    .col-md-6#product-box
       .panel.panel-default
         .panel-heading
           %h2.panel-title= product.title
@@ -21,8 +21,9 @@
             %th= link_to 'Edit', edit_category_product_path(product.category,product), class: 'btn btn-success btn-sm'
             %th= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
 
-  - if current_user && current_user.admin?
+  - if current_user
     .col-md-12
       %h3 New product
       = render 'products/form'
-      = link_to 'Edit Category', edit_category_path(category), class: 'btn btn-primary'
+- if (current_user && current_user.admin?)
+  = link_to 'Edit Category', edit_category_path(category), class: 'btn btn-primary'
