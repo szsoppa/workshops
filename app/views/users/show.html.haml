@@ -1,5 +1,6 @@
 #user-box
   %h1= "#{@user.firstname} #{@user.lastname}"
+  =link_to "Edit your account", edit_user_registration_path, class: "btn btn-primary"
 .col-md-4.no-padding
   = image_tag gravatar_url(@user, 800), id: 'gravatar'
 .col-md-8.extra-padding

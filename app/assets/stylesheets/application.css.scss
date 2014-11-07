@@ -141,11 +141,13 @@ body {
 
   .btn {
      background-color: $purple;
+     border-color: $white;
      border-radius: 7px !important;
      min-width: 40px !important;
      color: $white;
 
      &:hover {
+       border-color: $white;
        background-color: $purple;
        color: $white;
      }

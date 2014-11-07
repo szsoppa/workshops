@@ -22,7 +22,11 @@
     .panel-heading
       %h2.panel-title Reviews
     .panel-body
+      - product.reviews.each do |r|
+        %h3= "By user #{r.user.firstname}"
+        %p= "\"#{r.content}\""
       - if (current_user == product.user) || current_user.admin?
+        %h3 Create your own review
         = render 'reviews/form'
 
 - if (current_user == product.user) || current_user.admin?
