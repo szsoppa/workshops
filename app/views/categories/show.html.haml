@@ -8,14 +8,21 @@
           %h2.panel-title= product.title
           = "#{product.price} $"
         .panel-body
+          %h3 Description
           %p= product.description
+          - if product.reviews.empty?
+            %h3 Product doesn't have any review yet
+          - else
+            %h3 Last review
+            %p= "From #{product.user.firstname}: \"#{product.reviews.last.content}\""
+          = link_to 'See Details', category_product_path(category, product), class: 'btn btn-primary'
+          %br
           - if (current_user == product.user) || (current_user && current_user.admin?)
             %th= link_to 'Edit', edit_category_product_path(product.category,product), class: 'btn btn-success btn-sm'
             %th= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
 
-
   - if current_user && current_user.admin?
-    %h3 New product
-    = render 'products/form'
-    = link_to 'Edit', edit_category_path(category), class: 'btn btn-primary'
-  = link_to 'Back', categories_path, class: 'btn btn-primary'
+    .col-md-12
+      %h3 New product
+      = render 'products/form'
+      = link_to 'Edit Category', edit_category_path(category), class: 'btn btn-primary'

@@ -25,11 +25,11 @@
       - product.reviews.each do |r|
         %h3= "By user #{r.user.firstname}"
         %p= "\"#{r.content}\""
-      - if (current_user == product.user) || current_user.admin?
+      - if (current_user == product.user) || (current_user && current_user.admin?)
         %h3 Create your own review
         = render 'reviews/form'
 
-- if (current_user == product.user) || current_user.admin?
+- if (current_user == product.user) || (current_user && current_user.admin?)
   = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
 
 = link_to 'Back', category_path(product.category.id), class: 'btn btn-primary'
