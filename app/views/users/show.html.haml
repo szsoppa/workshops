@@ -10,4 +10,4 @@
   - else
     %h3= "User five recent reviews: "
     - @user.reviews.sort.last(5).each do |r|
-      %h4= "\"#{r.content}\""
+      %h4= "\"#{r.content}\" #{r.created_at.strftime("%m-%d-%Y")}"

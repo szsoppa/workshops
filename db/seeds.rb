@@ -50,5 +50,5 @@ phones.products.create(
 	user: users[3])
 
 Product.all.each do |product|
-	5.times { product.reviews.create(content: 'Here is a great review example for product #{product}', rating: rand(5)+1, user: users[rand(5)+1]) }
+	5.times { product.reviews.create(content: 'Here is a great review example for product', rating: rand(5)+1, user: users[rand(5)+1]) }
 end
