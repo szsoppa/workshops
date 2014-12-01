@@ -23,6 +23,8 @@ gem 'unicorn'
 
 group :development do
   gem 'spring'
+  gem "rails-erd"
+  gem 'railroady'
 end
 
 group :development, :test do
