@@ -1,0 +1,19 @@
+%h1 Sign in
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+  = devise_error_messages!
+  .form-group
+    = f.label :email, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.email_field :email, class: "form-control"
+  .form-group
+    = f.label :password, class: "col-sm-2 control-label"
+    .col-sm-10
+      = f.password_field :password, autocomplete: "off", class: "form-control"
+  .form-group
+    .span7.text-center
+      .col-sm-4.col-centered
+        = f.submit "Sign in", class: "btn btn-primary btn-block"
+  .form-group
+    .span7.text-center
+      .col-sm-4.col-centered
+        = render "devise/shared/links"
