@@ -27,6 +27,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    ActiveRecord::Base.connection.execute("select update_category(#{category.id},'#{category_params["name"]}');")
     if category.update(category_params)
       redirect_to category, notice: 'Category was successfully updated.'
     else

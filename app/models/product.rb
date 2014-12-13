@@ -1,3 +1,5 @@
+require 'pg'
+
 class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
@@ -9,9 +11,8 @@ class Product < ActiveRecord::Base
   validates :price, presence: true, format: { with: /\A\d+\.*\d{0,2}\z/ }
 
   def average_rating
-    avg = 0.0
-    reviews.each {|r| avg+=r.rating }
-    avg / reviews.count
+    result = ActiveRecord::Base.connection.execute("select average_rating(#{self.id});")
+    result.getvalue(0,0) != nil ? result.getvalue(0,0) : 2.5
   end
 
 end

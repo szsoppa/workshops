@@ -1,31 +1,34 @@
 %p#notice= notice
-.col-md-12
-  %h1= category.name
-  - category.products.each do |product|
-    .col-md-6#product-box
-      .panel.panel-default
-        .panel-heading
-          %h2.panel-title= product.title
-          = "#{product.price} $"
-          - if current_user
+.row
+  .col-md-12
+    %h1= category.name
+    - category.products.each do |product|
+      .col-md-6#product-box
+        .panel.panel-default
+          .panel-heading
+            %h2.panel-title= product.title
+            = "#{product.price} $"
+            - if current_user
+              %br
+              = link_to "Add to list", list_path(current_user.list, product: product, add: true),
+                                                                    method: :put, class: 'btn btn-primary'
+          .panel-body
+            %h3 Description
+            %p= product.description
+            - if product.reviews.empty?
+              %h3 Product doesn't have any review yet
+            - else
+              %h3 Last review
+              %p= "From #{product.user.firstname}: \"#{product.reviews.last.content}\""
+            %h3= "Average rating: #{product.average_rating}"
+            = link_to 'See Details', category_product_path(category, product), class: 'btn btn-primary'
             %br
-            = link_to "Add to list", list_path(current_user.list, product: product, add: true),
-                                                                  method: :put, class: 'btn btn-primary'
-        .panel-body
-          %h3 Description
-          %p= product.description
-          - if product.reviews.empty?
-            %h3 Product doesn't have any review yet
-          - else
-            %h3 Last review
-            %p= "From #{product.user.firstname}: \"#{product.reviews.last.content}\""
-          = link_to 'See Details', category_product_path(category, product), class: 'btn btn-primary'
-          %br
-          - if (current_user == product.user) || (current_user && current_user.admin?)
-            %th= link_to 'Edit', edit_category_product_path(product.category,product), class: 'btn btn-success btn-sm'
-            %th= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+            - if (current_user == product.user) || (current_user && current_user.admin?)
+              %th= link_to 'Edit', edit_category_product_path(product.category,product), class: 'btn btn-success btn-sm'
+              %th= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
 
-  - if current_user
+- if current_user
+  .row
     .col-md-12
       %h3 New product
       = render 'products/form'
