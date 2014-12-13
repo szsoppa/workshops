@@ -28,7 +28,6 @@ $white: #fff;
 body {
   /* navigation */
   nav {
-    font-size: 2em !important;
 
     a {
       color: $white !important;
@@ -37,8 +36,10 @@ body {
       &:hover {
         color: $white;
         text-decoration: none;
+        background-color: $purple;
         text-shadow: 0 0 5px $white;
       }
+      font-size: 1.8em;
     }
 
     &.navbar-inverse { background-color: $purple; }

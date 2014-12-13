@@ -5,12 +5,13 @@
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
+        %span.icon-bar
       = link_to 'Home', root_path, class: "navbar-link.glyphicon.glyphicon-home"
-    %ul.nav.navbar-nav.navbar-right
-      #navbar.navbar-collapse.collapse
-        .navbar-text
-          %ul.nav.navbar-nav
-            %li
-              = link_to "User profile", current_user
-            %li
-              = link_to "Log out", destroy_user_session_path, method: :delete
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to "My list (#{current_user.list.products.count})", list_path(current_user.list)
+        %li
+          = link_to "User profile", current_user
+        %li
+          = link_to "Log out", destroy_user_session_path, method: :delete

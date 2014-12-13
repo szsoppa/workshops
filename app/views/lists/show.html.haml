@@ -1,6 +1,11 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_list_path(@list)
-\|
-= link_to 'Back', lists_path
+%h1 Products:
+- if current_user.list.products.empty?
+  %h2 There is no products on your list yet
+- else
+  - for p in current_user.list.products
+    .panel.panel-default
+      .panel-heading
+        %h2.panel-title= p.title
+      .panel-body
+        %tr
+          %th= link_to 'Delete from list', list_path(@list, product: p), method: :put , class: 'btn btn-info btn-sm'

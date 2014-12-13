@@ -1,6 +1,5 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
 
   def index
@@ -27,7 +26,15 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list.update(list_params)
+    if product_params.empty?
+      @list.update(list_params)
+    elsif params[:add]
+      @list.products << Product.find(params[:product]) if !@list.products.include?(Product.find(params[:product]))
+      @list.save
+    else
+      @list.products.delete(Product.find(params[:product]))
+      @list.save
+    end
     respond_with(@list)
   end
 
@@ -43,5 +50,9 @@ class ListsController < ApplicationController
 
     def list_params
       params[:list]
+    end
+
+    def product_params
+      params[:product]
     end
 end

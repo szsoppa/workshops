@@ -7,6 +7,10 @@
         .panel-heading
           %h2.panel-title= product.title
           = "#{product.price} $"
+          - if current_user
+            %br
+            = link_to "Add to list", list_path(current_user.list, product: product, add: true),
+                                                                  method: :put, class: 'btn btn-primary'
         .panel-body
           %h3 Description
           %p= product.description

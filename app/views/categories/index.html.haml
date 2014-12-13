@@ -1,17 +1,18 @@
 #main
   %h1 Categories
 
-  - categories.each do |category|
-    .col-md-6
-      .panel.panel-default
-        .panel-heading
-          %h2.panel-title= category.name
-        .panel-body
-          %tr
-            %th= link_to 'Show', category, class: 'btn btn-info btn-sm'
-            - if current_user && current_user.admin?
-              %th= link_to 'Edit', edit_category_path(category), class: 'btn btn-success btn-sm'
-              %th= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+  .col-md-12
+    - categories.order('created_at ASC').each do |category|
+      .col-md-6
+        .panel.panel-default
+          .panel-heading
+            %h2.panel-title= category.name
+          .panel-body
+            %tr
+              %th= link_to 'Show', category, class: 'btn btn-info btn-sm'
+              - if current_user && current_user.admin?
+                %th= link_to 'Edit', edit_category_path(category), class: 'btn btn-success btn-sm'
+                %th= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
 
 
   - if current_user && current_user.admin?

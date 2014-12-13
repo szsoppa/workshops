@@ -12,12 +12,9 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
     super
     if resource.destroy
       list = List.find_by(user_id: resource.id)
-      # if list.products.any?
-      #   list.products.each do |p|
-      #     p.
-      #   end
-      # end
+      list.products.clear
       list.destroy
     end
   end
+
 end
