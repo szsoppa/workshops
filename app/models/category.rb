@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
   has_many :products
 
-  validates :name, uniqueness: { case_sensitive: true }
+  validates :name, uniqueness: { case_sensitive: true }, length: { minimum: 2}
 end

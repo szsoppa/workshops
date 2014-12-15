@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   expose(:category)
   expose(:product) { Product.new }
 
+
   def index
   end
 
