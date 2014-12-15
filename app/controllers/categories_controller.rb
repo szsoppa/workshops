@@ -9,6 +9,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    if params[:search]
+      @products = category.products.select {|p| p if p.title.downcase.include?(params[:search].downcase) }
+    else
+      @products = category.products
+    end
   end
 
   def new

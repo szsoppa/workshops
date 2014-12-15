@@ -46,6 +46,10 @@ class ProductsController < ApplicationController
     redirect_to category_url(product.category), notice: 'Product was successfully destroyed.'
   end
 
+  def search
+    binding.pry
+  end
+
   private
 
   def product_params
