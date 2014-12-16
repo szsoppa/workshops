@@ -1,4 +1,5 @@
 %h1 Sign in
+= flash[:alert]
 = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
   = devise_error_messages!
   .form-group
